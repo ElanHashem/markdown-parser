@@ -31,7 +31,7 @@ public class MarkdownParse {
         else if (!markdown.contains(")")){
             return toReturn; 
         }
-
+ 
         while(currentIndex < markdown.length()) {
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
@@ -40,11 +40,11 @@ public class MarkdownParse {
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
             if (!markdown.substring(currentIndex,markdown.length()).contains("[")
-            /*|| !markdown.substring(currentIndex,markdown.length()).contains("]")*/) {
+            || !markdown.substring(currentIndex,markdown.length()).contains("]")) {
                 return toReturn;
             }
         
-            System.out.println(currentIndex);
+
         }
 
         return toReturn;
