@@ -31,12 +31,18 @@ public class MarkdownParse {
         else if (!markdown.contains(")")){
             return toReturn; 
         }
- 
+        
+
         while(currentIndex < markdown.length()) {
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
+            int parenTotal = openParen + closeBracket; 
+            int bracketTotal = openBracket + closeBracket; 
+            if (parenTotal < bracketTotal){
+                return toReturn;
+            }
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
             if (!markdown.substring(currentIndex,markdown.length()).contains("[")
@@ -49,7 +55,6 @@ public class MarkdownParse {
 
         return toReturn;
     }
-
 
     public static void main(String[] args) throws IOException {
         Path fileName = Path.of(args[0]);
