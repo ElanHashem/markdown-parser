@@ -157,11 +157,19 @@ public class MarkdownParseTest {
 
     }    
     
+    @Test
+    public void testGetLinks10() throws IOException{
+
+        Path fileName = Path.of("/Users/brandonluu/Documents/GitHub/markdown-parser/test5-file.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+
+        ArrayList<String> result = new ArrayList<String>();
 
 
+        assertEquals(result, links);
 
-
-
+    }
 
 
 }
